@@ -1,0 +1,389 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+contract local{
+
+    uint[5] public array=[34,64,65,86,54];
+
+    function setter(uint index,uint value) public
+    {
+        array[index]=value;
+    }
+}
+___________
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+contract local{
+    uint[] public array;
+
+    function pushElem(uint item) public
+    {
+        array.push(item);
+    }
+
+    function popElem() public
+    {
+        array.pop();
+    }
+
+    function length() public view returns(uint)
+    {
+        return array.length;
+    }
+}
+
+
+_________
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+contract array{
+
+    bytes3 public b3;
+    bytes2 public b2;
+    bytes4 public b4;
+    
+    function setter() public
+    {
+        b3="abc";
+        b2="ab";
+        b4="a"; // consider 
+    }
+}
+
+________
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+contract array{
+    bytes public b1="abc";
+
+    function pushelem() public
+    {
+        b1.push('e');
+    }
+    function getelem(uint i) public view returns(bytes1){
+        return b1[i];
+    }
+
+    function length() public view returns(uint)
+    {
+        return b1.length;
+    }
+}
+
+_______
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+contract loops{
+
+    uint[3] public arr;
+    uint public count;
+
+    // while loop
+
+    // function loop() public
+    // {
+    //     while(count<arr.length){
+    //         arr[count]=count;
+    //         count++;
+    //     }
+    // }
+
+    // do-while loop
+    function loopps() public{
+    do{
+            arr[count]=count;
+            count++;
+        }while(count<arr.length);
+    }
+
+}
+
+________
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+contract loops{
+
+    uint[3] public arr;
+    uint public count;
+
+    // for loop
+
+    function loop() public
+    {
+        for(uint i=count;i<arr.length;i++){
+            arr[count]=count;
+            count++;
+        }
+    }
+}
+
+_________
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+contract boolean{
+
+    bool public value;
+
+    function check(uint a) public returns(bool)
+    {
+        if(a>100){
+            value=true;
+            return value;
+        }
+        else
+        {
+            value=false;
+            return value;
+        }
+    }
+}
+
+________
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+struct student{
+    uint roll;
+    string name;
+}
+
+contract demo{
+
+    student public s1;
+
+    constructor(uint _key ,string memory _value) 
+    {
+        s1.roll=_key;
+        s1.name=_value;
+    }
+
+    function Change(uint _key,string memory _value) public
+    {
+        student memory new_student=student({
+            roll:_key,
+            name:_value
+        });
+         s1=new_student;
+    }
+}
+
+
+___________
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+contract demo{
+
+    enum user{allowd,not_allowed,wait}
+    user public u1=user.allowd;
+    uint public lottery=1000;
+    function owner()public
+   {
+       if(u1==user.allowd){
+           lottery=0;
+       }
+       else{
+           lottery=1000;
+       }
+   }
+   function setter() public{
+       u1=user.not_allowed;
+   }
+        
+}
+__________
+
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+contract demo{
+
+    mapping(uint=>string) public roll_no;
+    function setter(uint key,string memory value) public{
+        roll_no[key]=value;
+    }
+}
+
+
+____________
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+contract demo{
+
+    struct student{
+        string name;
+        uint class;
+    }
+
+    mapping (uint=>student) public data;
+
+    function setter(uint roll_no,string memory _name,uint _class) public
+    {
+        data[roll_no]=student(_name,_class);
+    }
+}
+
+_________________
+
+
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+contract demo{
+string[] public student=['assad','ali','kamran'];
+
+function mem()public view
+{
+    string[] memory s1=student;
+    s1[0]='Dilawar';
+}
+function stor()public
+{
+    string[] storage s1=student;
+    s1[0]='Umair';
+}
+
+}
+
+
+___________________
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+
+contract demo{
+    function getter() public view returns(uint block_no,uint timestamp,address msgSender,uint256 _days,uint256 _hours,uint256 _minutes,uint256 _second)
+    {
+        return(block.number,block.timestamp,msg.sender,1 days,1 hours,1 minutes,1 seconds);
+    }
+}
+___________
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+contract pay{
+
+    address payable user=payable(0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2);
+    function payethr() public payable
+    {
+
+    }
+
+    function getbalance()public view returns(uint)
+    {
+        return address(this).balance;
+    }
+
+    function sndethrtoaccount() public{
+
+        user.transfer(2 ether);
+    }
+}
+______________
+
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+contract A{
+
+    function f1() public pure returns(uint){
+        return 1;
+    }
+
+     function f2() private pure returns(uint){
+        return 2;
+    }
+
+     function f3() internal pure returns(uint){
+        //  uint a=f1();     run
+        //  uint a=f4();   error because we cannot call  the external function in contract
+         //  uint a=f2();   error because the visibility is private
+
+        return 3;
+    }
+
+     function f4() external pure returns(uint){
+        return 4;
+    }
+}
+    // derived contract
+
+contract B is A{
+    // uint public a1=f2();   error because the visibility is private
+    // uint public a1=f4();   error because we cannot call  the external function in contract
+
+    uint public bc=f3();
+}
+ 
+    // other contract
+
+    contract C{
+
+        A obj=new A(); // how to create object in solidity
+        uint public bc2=obj.f4();
+
+        function investProfit() public view returns(uint256){
+    uint256 profit;
+    if(block.timestamp < stakes[msg.sender].endTime){
+        if((stakes[msg.sender].profit + stakes[msg.sender].profitWithdran)*(block.timestamp - stakes[msg.sender].startTime) / (5* (1 minutes)) > stakes[msg.sender].profitWithdran )
+        profit=((stakes[msg.sender].profit + stakes[msg.sender].profitWithdran)*(block.timestamp - stakes[msg.sender].startTime) / (5* (1 minutes)) - stakes[msg.sender].profitWithdran );
+    return profit;
+    }
+    else {
+        return 0;
+    }
+    if(stakes[msg.sender].endTime < block.timestamp){
+        return stakes[msg.sender].profit;
+    }
+
+}
+
+ function withdraw() public returns(bool){
+     uint256 currentProfit=investProfit();
+     stakes[msg.sender].profitWithdran +=currentProfit;
+     stakes[msg.sender].profit -=currentProfit;
+     token.transferFrom(tokenOwner, msg.sender,currentProfit);
+     return true;
+     
+ }
+//  function getStakingInfo(uint index) public view returns(uint , uint256 ,uint , uint , uint256, bool){
+//        allStore storage getallStore = stakes[msg.sender];
+//        return (getallStore.amount[index]  ,getallStore.profit[index] , getallStore.profitWithdran[index],getallStore.startTime[index],getallStore.endTime[index],getallStore.hasStaked[index]);
+//    }
+    }
+    
+________________
+
+
+
