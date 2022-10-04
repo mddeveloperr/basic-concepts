@@ -353,35 +353,7 @@ contract B is A{
         A obj=new A(); // how to create object in solidity
         uint public bc2=obj.f4();
 
-        function investProfit() public view returns(uint256){
-    uint256 profit;
-    if(block.timestamp < stakes[msg.sender].endTime){
-        if((stakes[msg.sender].profit + stakes[msg.sender].profitWithdran)*(block.timestamp - stakes[msg.sender].startTime) / (5* (1 minutes)) > stakes[msg.sender].profitWithdran )
-        profit=((stakes[msg.sender].profit + stakes[msg.sender].profitWithdran)*(block.timestamp - stakes[msg.sender].startTime) / (5* (1 minutes)) - stakes[msg.sender].profitWithdran );
-    return profit;
-    }
-    else {
-        return 0;
-    }
-    if(stakes[msg.sender].endTime < block.timestamp){
-        return stakes[msg.sender].profit;
-    }
-
-}
-
- function withdraw() public returns(bool){
-     uint256 currentProfit=investProfit();
-     stakes[msg.sender].profitWithdran +=currentProfit;
-     stakes[msg.sender].profit -=currentProfit;
-     token.transferFrom(tokenOwner, msg.sender,currentProfit);
-     return true;
-     
- }
-//  function getStakingInfo(uint index) public view returns(uint , uint256 ,uint , uint , uint256, bool){
-//        allStore storage getallStore = stakes[msg.sender];
-//        return (getallStore.amount[index]  ,getallStore.profit[index] , getallStore.profitWithdran[index],getallStore.startTime[index],getallStore.endTime[index],getallStore.hasStaked[index]);
-//    }
-    }
+      
     
 ________________
 
